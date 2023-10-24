@@ -36,7 +36,7 @@ function LandingPageHeader() {
         <div className="filter" />
         <Container>
           <div className="motto text-center">
-            <h1>Wild Wicks</h1>
+            <h1>Vague</h1>
             <h4>A simple website template for any new business.</h4>
           </div>
         </Container>

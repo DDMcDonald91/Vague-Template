@@ -81,7 +81,7 @@ function ExamplesNavbar() {
             title="Coded by Creative Tim"
             tag={Link}
           >
-            Wild Wicks
+            Vague
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
