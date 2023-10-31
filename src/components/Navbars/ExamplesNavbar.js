@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
+
+// emailjs imports
+import emailjs from '@emailjs/browser';
 
 // reactstrap components
 import {
@@ -20,9 +23,14 @@ import {
   FormGroup,
   Label,
   Input,
+  Alert
 } from "reactstrap";
 
+// logo import
+import  logo  from '../../assets/img/clientLogo.png'
+
 function ExamplesNavbar() {
+  // template code
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -52,6 +60,40 @@ function ExamplesNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+  // end of template code
+
+  // state
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+
+  // email js functinality
+  const form = useRef();
+  
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    setLoading(true)
+
+    await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+      .then((result) => {
+          console.log(result.text);
+          setMessage('Message sent successfully! We will be in touch soon!')
+      }, (error) => {
+          console.log(error.text);
+          setMessage('Sorry there seems to be an error...please try again')
+      });
+
+      messageReset()
+
+      setLoading(false)
+  };
+
+  
+  const messageReset = () => {
+    setTimeout(() => {
+      setMessage('')
+      }, 3000)
+  }
 
   // handles modal functionality
   const [modal, setModal] = useState(false);
@@ -76,12 +118,9 @@ function ExamplesNavbar() {
         <div className="navbar-translate">
           <NavbarBrand
             data-placement="bottom"
-            to="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
-            tag={Link}
+            title="Candles by Taliah"
           >
-            Vague
+            <img src={logo} style={{height: '45px', width: 'auto'}} />
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -117,31 +156,32 @@ function ExamplesNavbar() {
 
 
     {/*  Modal Code for contacting owner */}
-    <Modal>
-      <ModalHeader>
+    <Modal isOpen={modal} toggle={toggle}>
+      <ModalHeader toggle={toggle}>
         Contact Me
       </ModalHeader>
       <ModalBody>
             <Container>
-              <Form onSubmit={handleSubmit}>
+              <form ref={form} onSubmit={sendEmail}>
+              {message && (<Alert color='secondary'>{message}</Alert>)}
                 <FormGroup>
                   <Label>Name</Label>
-                  <Input type='text' placeholder="enter your name" />
+                  <Input type='text' placeholder="enter your name" name="user_name"/>
                 </FormGroup>
                 <FormGroup>
                   <Label>Email</Label>
-                  <Input type='text' placeholder="enter your email" />
+                  <Input type='text' placeholder="enter your email" name="user_email" />
                 </FormGroup>
                 <FormGroup>
                   <Label>Message</Label>
-                  <Input type='textarea' placeholder="enter your message" height={300} />
+                  <Input type='textarea' placeholder="enter your message" name='message' height={400} />
                 </FormGroup>
                 <div mt='2'>
-                  <Button type="submit">
-                    Submit
+                  <Button type="submit" value="Send" disabled={loading}>
+                    {loading ? 'subscribing...' : 'Subscribe'}
                   </Button>
                 </div>
-              </Form>
+              </form>
             </Container>
       </ModalBody>
       <ModalFooter>
