@@ -19,8 +19,8 @@ import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
 // images
-import image1 from '../../assets/img/image1.jpg'
-import image2 from '../../assets/img/image2.jpg'
+import image1 from '../../assets/img/joshua-stannard.jpg'
+import image2 from '../../assets/img/header.jpg'
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -40,7 +40,7 @@ function LandingPage() {
             <Row>
               <Col md="6" style={{background: 'black', height: '600px'}}>
                 <Container>
-                <h2 style={{color: 'white'}} className="title">Handcrafted Candles</h2>
+                <h2 style={{color: 'white'}} className="title">Customized Website Templates</h2>
                 <h5 style={{color: 'white'}} className="description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </h5>

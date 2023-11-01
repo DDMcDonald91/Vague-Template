@@ -10,7 +10,7 @@ function DemoFooter() {
         <Row>
           <div style={{marginTop: 'auto', marginBottom: 'auto'}}>
             <h6>
-              Wild Wicks
+              Vague
             </h6>
           </div>
           <div className="credits ml-auto">

@@ -19,7 +19,7 @@ function LoginPage() {
       <div
         className="page-header"
         style={{
-          backgroundImage: "url(" + require("assets/img/signin.jpg") + ")",
+          backgroundImage: "url(" + require("assets/img/uriel-soberanes.jpg") + ")",
         }}
       >
         <div className="filter" />
