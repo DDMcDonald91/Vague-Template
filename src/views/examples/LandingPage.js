@@ -39,7 +39,7 @@ function LandingPage() {
 
     setLoading(true)
 
-    await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+    await emailjs.sendForm('YOUR_SERVICE_ID', 'template_32q9x7g', form.current, 'XgxC-c4yetEmRo5w-')
       .then((result) => {
           console.log(result.text);
           setMessage('You are now subscribed to our newletter!')

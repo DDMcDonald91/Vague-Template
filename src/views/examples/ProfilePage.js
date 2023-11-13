@@ -27,8 +27,15 @@ import { onAuthStateChanged } from "firebase/auth";
 
 // react router dom import
 import { useNavigate } from "react-router-dom";
+
+
 import Contacts from "components/Contacts/index.js";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
+import Inspiration from "components/Inspiration/Inspiration.js";
+
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
+
 
 function ProfilePage() {
   // state
@@ -117,12 +124,22 @@ function ProfilePage() {
               />
             </div>
             <div className="name">
+            <h6 className="description">Owner</h6>
               <h4 className="title">
                 Taliha Moores <br />
               </h4>
-              <h6 className="description">Owner</h6>
             </div>
           </div>
+          <Row>
+            <Col lg='9'>
+              <h5>Inspiration</h5>
+            <Inspiration />
+            </Col>
+            <Col lg='3'>
+              <h5>Calendar</h5>
+            <Calendar  />
+            </Col>
+          </Row>
           <br />
           {/*}
           <Contacts />
